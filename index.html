@@ -10,9 +10,19 @@
 <div class="auth-box">
 <h2>Sign Up</h2>
 
+<div class="input-group">
 <input id="suUser" placeholder="username">
+</div>
+
+<div class="input-group">
 <input id="suPass" type="password" placeholder="password">
+<span class="toggle" onclick="toggle('suPass')">&#128065;</span>
+</div>
+
+<div class="input-group">
 <input id="suConfirm" type="password" placeholder="confirm password">
+<span class="toggle" onclick="toggle('suConfirm')">&#128065;</span>
+</div>
 
 <div class="req">
 <p id="len" class="invalid">• 8 characters</p>
@@ -20,17 +30,20 @@
 <p id="sym" class="invalid">• with symbol</p>
 </div>
 
-<label><input type="checkbox" onclick="toggle('suPass')"> Show Password</label>
-<label><input type="checkbox" onclick="toggle('suConfirm')"> Show Confirm</label>
-
 <button onclick="signup()">Sign Up</button>
 
 <hr>
 
 <h2>Login</h2>
 
+<div class="input-group">
 <input id="liUser" placeholder="username">
+</div>
+
+<div class="input-group">
 <input id="liPass" type="password" placeholder="password">
+<span class="toggle" onclick="toggle('liPass')">&#128065;</span>
+</div>
 
 <button onclick="login()">Login</button>
 </div>
