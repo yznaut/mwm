@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Movie Watchlist - Login</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Movie Watchlist Manager</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h2>Sign Up</h2>
+<div class="auth-box">
+<h2>Sign Up</h2>
 
-    <input type="text" id="username" placeholder="Username (lowercase only)">
-    <input type="password" id="password" placeholder="Password">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+<input id="suUser" placeholder="username">
+<input id="suPass" type="password" placeholder="password">
+<input id="suConfirm" type="password" placeholder="confirm password">
 
-    <div id="strength"></div>
+<div class="req">
+<p id="len" class="invalid">• 8 characters</p>
+<p id="num" class="invalid">• with number</p>
+<p id="sym" class="invalid">• with symbol</p>
+</div>
 
-    <label>
-        <input type="checkbox" onclick="togglePassword()"> Show Password
-    </label>
+<label><input type="checkbox" onclick="toggle('suPass')"> Show Password</label>
+<label><input type="checkbox" onclick="toggle('suConfirm')"> Show Confirm</label>
 
-    <button onclick="signup()">Sign Up</button>
+<button onclick="signup()">Sign Up</button>
 
-    <hr>
+<hr>
 
-    <h2>Login</h2>
-    <input type="text" id="loginUser" placeholder="Username">
-    <input type="password" id="loginPass" placeholder="Password">
-    <button onclick="login()">Login</button>
+<h2>Login</h2>
+
+<input id="liUser" placeholder="username">
+<input id="liPass" type="password" placeholder="password">
+
+<button onclick="login()">Login</button>
 </div>
 
 <script src="script.js"></script>
