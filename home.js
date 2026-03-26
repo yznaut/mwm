@@ -1,52 +1,47 @@
-let watchingList = [];
-let watchedList = [];
+user.innerText = "User: " + localStorage.getItem("user");
 
-document.getElementById("userInfo").innerText =
-    "User: " + localStorage.getItem("user");
-
-// SWITCH PAGE
-function showPage(page) {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("profile").style.display = "none";
-    document.getElementById("about").style.display = "none";
-
+function show(page, btn) {
+    document.querySelectorAll(".main > div").forEach(d => d.style.display = "none");
     document.getElementById(page).style.display = "block";
+
+    document.querySelectorAll(".sidebar button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
 }
 
-// ADD MOVIE
-function addMovie() {
-    let title = document.getElementById("title").value;
-    let genre = document.getElementById("genre").value;
-    let date = new Date().toLocaleDateString();
+function add() {
+    let title = t.value;
+    let genre = g.value;
+    let date = d.value;
 
-    let li = document.createElement("li");
-    li.innerHTML = `${title} (${genre}) - ${date}
-    <button onclick="finishMovie(this)">Finish</button>
-    <button onclick="deleteMovie(this)">Delete</button>`;
+    let div = document.createElement("div");
+    div.className = "card";
 
-    document.getElementById("watching").appendChild(li);
+    div.innerHTML = `
+        ${title} (${genre}) - ${date}
+        <button onclick="finish(this)">Finish</button>
+        <button onclick="this.parentElement.remove()">Delete</button>
+    `;
+
+    watching.appendChild(div);
 }
 
-// DELETE
-function deleteMovie(btn) {
-    btn.parentElement.remove();
+function finish(btn) {
+    let parent = btn.parentElement;
+
+    let div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+        ${parent.innerText}
+        <br>Rating: <input type="number" min="1" max="5">
+        <br><input placeholder="comment">
+        <button onclick="this.parentElement.remove()">Delete</button>
+    `;
+
+    watched.appendChild(div);
+    parent.remove();
 }
 
-// FINISH → MOVE TO WATCHED
-function finishMovie(btn) {
-    let li = btn.parentElement;
-    let text = li.innerText;
-
-    let newLi = document.createElement("li");
-    newLi.innerHTML = text +
-        ` ⭐⭐⭐⭐⭐ <input placeholder="comment">
-        <button onclick="deleteMovie(this)">Delete</button>`;
-
-    document.getElementById("watched").appendChild(newLi);
-    li.remove();
-}
-
-// LOGOUT
 function logout() {
-    window.location.href = "index.html";
+    window.location = "index.html";
 }
