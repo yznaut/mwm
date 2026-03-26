@@ -11,10 +11,10 @@ document.getElementById('suPass').oninput = function() {
     sym.className = /[!@#$%^&*]/.test(v) ? "valid" : "invalid";
 };
 
-// show/hide
+// show/hide password
 function toggle(id) {
-    let x = document.getElementById(id);
-    x.type = x.type === "password" ? "text" : "password";
+    let input = document.getElementById(id);
+    input.type = input.type === "password" ? "text" : "password";
 }
 
 // signup
@@ -23,15 +23,13 @@ function signup() {
     let p = suPass.value;
     let c = suConfirm.value;
 
-    if (p !== c) return alert("Password not match");
-
+    if (p !== c) return alert("Passwords do not match");
     if (!(p.length >= 8 && /[0-9]/.test(p) && /[!@#$%^&*]/.test(p)))
-        return alert("Weak password");
+        return alert("Password does not meet requirements");
 
     localStorage.setItem("user", u);
     localStorage.setItem("pass", p);
 
-    // clear fields
     suUser.value = "";
     suPass.value = "";
     suConfirm.value = "";
@@ -41,12 +39,8 @@ function signup() {
 
 // login
 function login() {
-    if (
-        liUser.value === localStorage.getItem("user") &&
-        liPass.value === localStorage.getItem("pass")
-    ) {
+    if (liUser.value === localStorage.getItem("user") &&
+        liPass.value === localStorage.getItem("pass")) {
         window.location = "home.html";
-    } else {
-        alert("Invalid login");
-    }
+    } else alert("Invalid login");
 }
