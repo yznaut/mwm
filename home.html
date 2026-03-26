@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h3>Menu</h3>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('profile')">Profile</button>
+    <button onclick="showPage('about')">About</button>
+</div>
+
+<div class="main">
+
+    <h1>
+        <img src="logo.png" width="30">
+        Movie Watchlist Manager
+    </h1>
+
+    <!-- HOME -->
+    <div id="home">
+        <h2>Currently Watching</h2>
+
+        <input id="title" placeholder="Movie Title">
+        <input id="genre" placeholder="Genre (optional)">
+        <button onclick="addMovie()">Add</button>
+
+        <ul id="watching"></ul>
+
+        <h2>Watched</h2>
+        <ul id="watched"></ul>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="profile" style="display:none;">
+        <h2>Profile</h2>
+        <p id="userInfo"></p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about" style="display:none;">
+        <h2>About</h2>
+        <p>This system helps users track movies.</p>
+        <p>Developers: Your Group</p>
+    </div>
+
+</div>
+
+<script src="home.js"></script>
+</body>
+</html>
