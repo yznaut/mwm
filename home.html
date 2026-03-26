@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
+<title>Movie Watchlist Manager</title>
 </head>
 <body>
 
@@ -12,7 +13,7 @@
 </div>
 
 <div class="topbar">
-<img src="logo.png" width="30">
+<img src="logo.png">
 <b>Movie Watchlist Manager</b>
 </div>
 
@@ -20,13 +21,10 @@
 
 <div id="home">
 <h3>Currently Watching</h3>
-
-<input id="t" placeholder="title">
-<input id="g" placeholder="genre (optional)">
+<input id="t" placeholder="Title">
+<input id="g" placeholder="Genre (optional)">
 <input id="d" type="date">
-
 <button onclick="add()">Add</button>
-
 <div id="watching"></div>
 
 <h3>Watched</h3>
@@ -45,8 +43,7 @@
 <p>Developers: Your Group</p>
 </div>
 
-</div>
-
 <script src="home.js"></script>
+</div>
 </body>
 </html>
