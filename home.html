@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie Watchlist</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="sidebar">
-    <h3>Menu</h3>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('profile')">Profile</button>
-    <button onclick="showPage('about')">About</button>
+<button onclick="show('home',this)" class="active">Home</button>
+<button onclick="show('profile',this)">Profile</button>
+<button onclick="show('about',this)">About</button>
+</div>
+
+<div class="topbar">
+<img src="logo.png" width="30">
+<b>Movie Watchlist Manager</b>
 </div>
 
 <div class="main">
 
-    <h1>
-        <img src="logo.png" width="30">
-        Movie Watchlist Manager
-    </h1>
+<div id="home">
+<h3>Currently Watching</h3>
 
-    <!-- HOME -->
-    <div id="home">
-        <h2>Currently Watching</h2>
+<input id="t" placeholder="title">
+<input id="g" placeholder="genre (optional)">
+<input id="d" type="date">
 
-        <input id="title" placeholder="Movie Title">
-        <input id="genre" placeholder="Genre (optional)">
-        <button onclick="addMovie()">Add</button>
+<button onclick="add()">Add</button>
 
-        <ul id="watching"></ul>
+<div id="watching"></div>
 
-        <h2>Watched</h2>
-        <ul id="watched"></ul>
-    </div>
+<h3>Watched</h3>
+<div id="watched"></div>
+</div>
 
-    <!-- PROFILE -->
-    <div id="profile" style="display:none;">
-        <h2>Profile</h2>
-        <p id="userInfo"></p>
-        <button onclick="logout()">Logout</button>
-    </div>
+<div id="profile" style="display:none;">
+<h3>Profile</h3>
+<p id="user"></p>
+<button onclick="logout()">Logout</button>
+</div>
 
-    <!-- ABOUT -->
-    <div id="about" style="display:none;">
-        <h2>About</h2>
-        <p>This system helps users track movies.</p>
-        <p>Developers: Your Group</p>
-    </div>
+<div id="about" style="display:none;">
+<h3>About</h3>
+<p>Movie Watchlist Manager system</p>
+<p>Developers: Your Group</p>
+</div>
 
 </div>
 
