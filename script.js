@@ -1,64 +1,51 @@
-// AUTO LOWERCASE USERNAME
-document.getElementById("username").addEventListener("input", function() {
-    this.value = this.value.toLowerCase();
-});
+// lowercase username
+document.getElementById('suUser').oninput = e =>
+    e.target.value = e.target.value.toLowerCase();
 
-// PASSWORD STRENGTH
-document.getElementById("password").addEventListener("input", function() {
-    let val = this.value;
-    let strength = document.getElementById("strength");
+// password validation
+document.getElementById('suPass').oninput = function() {
+    let v = this.value;
 
-    let strong = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+    len.className = v.length >= 8 ? "valid" : "invalid";
+    num.className = /[0-9]/.test(v) ? "valid" : "invalid";
+    sym.className = /[!@#$%^&*]/.test(v) ? "valid" : "invalid";
+};
 
-    if (strong.test(val)) {
-        strength.style.background = "green";
-    } else {
-        strength.style.background = "red";
-    }
-});
-
-// SHOW / HIDE PASSWORD
-function togglePassword() {
-    let pass = document.getElementById("password");
-    let confirm = document.getElementById("confirmPassword");
-
-    pass.type = pass.type === "password" ? "text" : "password";
-    confirm.type = confirm.type === "password" ? "text" : "password";
+// show/hide
+function toggle(id) {
+    let x = document.getElementById(id);
+    x.type = x.type === "password" ? "text" : "password";
 }
 
-// SIGN UP
+// signup
 function signup() {
-    let user = username.value;
-    let pass = password.value;
-    let confirm = confirmPassword.value;
+    let u = suUser.value;
+    let p = suPass.value;
+    let c = suConfirm.value;
 
-    let regex = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+    if (p !== c) return alert("Password not match");
 
-    if (!regex.test(pass)) {
-        alert("Password must be 8 chars, with number & symbol");
-        return;
-    }
+    if (!(p.length >= 8 && /[0-9]/.test(p) && /[!@#$%^&*]/.test(p)))
+        return alert("Weak password");
 
-    if (pass !== confirm) {
-        alert("Passwords do not match");
-        return;
-    }
+    localStorage.setItem("user", u);
+    localStorage.setItem("pass", p);
 
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
+    // clear fields
+    suUser.value = "";
+    suPass.value = "";
+    suConfirm.value = "";
 
-    alert("Signup successful!");
+    alert("Signed up!");
 }
 
-// LOGIN
+// login
 function login() {
-    let user = loginUser.value;
-    let pass = loginPass.value;
-
-    if (user === localStorage.getItem("user") &&
-        pass === localStorage.getItem("pass")) {
-
-        window.location.href = "home.html";
+    if (
+        liUser.value === localStorage.getItem("user") &&
+        liPass.value === localStorage.getItem("pass")
+    ) {
+        window.location = "home.html";
     } else {
         alert("Invalid login");
     }
